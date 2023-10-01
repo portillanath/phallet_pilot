@@ -1,0 +1,5 @@
+WARNING: A conda environment already exists at '/hpcfs/home/ciencias_biologicas/na.portilla10/.conda/envs/crocrontab'
+Remove existing environment (y/[n])? 
+
+CondaSystemExit: Exiting.
+

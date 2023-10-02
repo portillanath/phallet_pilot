@@ -20,6 +20,7 @@ source activate "${conda_path}/envs/crocrontab"
 
 # Installation through bioconda
 "$conda_path/bin/conda" install -y -c conda-forge crontab
+pip install xlsx2csv
 
 # Create the folder for storing ICTV Metadata
 mkdir -p ./Virus_Metadata_Resource
@@ -27,17 +28,21 @@ mkdir -p ./Virus_Metadata_Resource
 #Create a temporary script file
 echo "#!/bin/bash"> mycron_script
 echo "cd ${PWD}/Virus_Metadata_Resource">> mycron_script
-echo "wget https://ictv.global/vmr/current" >> mycron_script
+echo "wget https://ictv.global/vmr/current" >>mycron_script 
+echo "xlsx2csv current VMR.csv" >> mycron_script
 
 #Make executable the script
 chmod +x mycron_script
 
-# After this, a new crontab job is made
-export VISUAL=echo; crontab -e > mycron
+${PWD}/mycron_script
+cat mycron_script
 
-echo "SHELL=/bin/bash">> mycron
+# After this, a new crontab job is made
+echo "SHELL=/bin/bash"> mycron
 echo "BASH_ENV='${HOME}/.bashrc_conda'" >> mycron
 echo "0 12 * * * ${PWD}/mycron_script" >> mycron
+
+cat mycron
 
 #Install the crontab update
 crontab mycron

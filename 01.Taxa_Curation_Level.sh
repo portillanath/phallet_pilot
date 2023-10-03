@@ -13,7 +13,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH -o Taxa_Curation_Level_job.o%j
 
-workdir=/hpcfs/home/ciencias_biologicas/na.portilla10/Source_PhageClouds
+workdir=
 cd $workdir 
 
 #Create a directory for taxa selected

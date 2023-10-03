@@ -109,6 +109,5 @@ for (accession in seq_along(genus_data$Virus_GENBANK_accession)){
     genera_list_space<-strsplit(genera_space," ")[[1]]
     retrive_genomes(genera_list_space)
     }
-
 }
 

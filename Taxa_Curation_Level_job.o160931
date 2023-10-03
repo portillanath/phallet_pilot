@@ -1,0 +1,8 @@
+/var/spool/slurmd/job160931/slurm_script: line 24: run: command not found
+
+CondaValueError: prefix already exists: /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/my_r_env
+
+
+EnvironmentLocationNotFound: Not a conda environment: /hpcfs/home/ciencias_biologicas/na.portilla10/phallet/envs/my_r_env
+
+/var/spool/slurmd/job160931/slurm_script: line 31: Rscript: command not found

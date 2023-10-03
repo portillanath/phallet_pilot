@@ -13,19 +13,22 @@
 #SBATCH --mail-type=ALL
 #SBATCH -o Taxa_Curation_Level_job.o%j
 
-workdir=
+workdir=~/phallet
 cd $workdir 
 
 #Create a directory for taxa selected
 
 mkdir -p Taxa_Selected
 
-source activate /hpcfs/home/ciencias_biologicas/na.portilla10/anaconda3_install/envs/my_r_env
+#Create a new enviroment from a yaml file 
+conda run -n base bash -c "echo \${CONDA_PREFIX}" > conda_path
+conda env create -f my_r_env.yml
+source activate ${conda_path}"envs/my_r_env"
 
-#Run R script for each genus 
+#Run R script for the genus provided as arguments 
 
 for genus_name in "$@";do
-Rscript B.Taxa_curation_resource.r $genus_name
+Rscript 01.Taxa_curation_Level.r $genus_name
 done
 
 conda deactivate

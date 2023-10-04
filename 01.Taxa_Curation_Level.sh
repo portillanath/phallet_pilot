@@ -21,14 +21,15 @@ cd $workdir
 mkdir -p Taxa_Selected
 
 #Create a new enviroment from a yaml file 
-conda run -n base bash -c "echo \${CONDA_PREFIX}" > conda_path
-conda env create -f my_r_env.yml
-source activate ${conda_path}"envs/my_r_env"
+#conda run -n base bash -c "echo \${CONDA_PREFIX}" > conda_path
+conda env create -f r_env.yml
+#echo "${conda_path}/envs/my_r_env"
+source activate r_env
 
 #Run R script for the genus provided as arguments 
 
 for genus_name in "$@";do
-Rscript 01.Taxa_curation_Level.r $genus_name
+Rscript 01.Taxa_Curation_Level.r $genus_name
 done
 
 conda deactivate

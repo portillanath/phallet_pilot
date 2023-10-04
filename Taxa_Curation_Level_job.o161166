@@ -1,8 +1,0 @@
-
-SpecNotFound: '/hpcfs/home/ciencias_biologicas/na.portilla10/phallet/my_r_env.yml' is empty
-
-/var/spool/slurmd/job161166/slurm_script: line 27: activate: No such file or directory
-Error in library("fuzzyjoin") : there is no package called ‘fuzzyjoin’
-Execution halted
-usage: conda [-h] [--no-plugins] [-V] COMMAND ...
-conda: error: argument COMMAND: invalid choice: 'deactivate' (choose from 'clean', 'compare', 'config', 'create', 'info', 'init', 'install', 'list', 'notices', 'package', 'remove', 'uninstall', 'rename', 'run', 'search', 'update', 'upgrade', 'doctor', 'env', 'content-trust')

@@ -20,16 +20,11 @@ cd $workdir
 
 mkdir -p Taxa_Selected
 
-#Create a new enviroment from a yaml file 
-#conda run -n base bash -c "echo \${CONDA_PREFIX}" > conda_path
-conda env create -f r_env.yml
-#echo "${conda_path}/envs/my_r_env"
-source activate r_env
-
-#Run R script for the genus provided as arguments 
+conda create -n dependencies
+conda activate dependencies
+conda install pandas
+conda install -c "conda-forge/label/cf201901" biopython
 
 for genus_name in "$@";do
-Rscript 01.Taxa_Curation_Level.r $genus_name
+python3 01.Taxa_Curation_Level.py $genus_name
 done
-
-conda deactivate

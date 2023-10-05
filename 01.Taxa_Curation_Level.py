@@ -24,7 +24,7 @@ def retrieve_genomes(genera_list):
     print(f"The number of phages with complete genome for all ICTV database is: {len(accessions)}")
 
     # Creates a folder for storage the selected taxas
-    ncbi_genome_actual = "/hpcfs/home/ciencias_biologicas/na.portilla10/Source_PhageClouds/Taxa_Selected"
+    ncbi_genome_actual = "./Taxa_Selected"
     os.makedirs(ncbi_genome_actual, exist_ok=True)
 
     for genus in genera_list:
@@ -38,6 +38,7 @@ def retrieve_genomes(genera_list):
 
         # Create a subfolder for the genus if it doesn't exist
         genus_folder = os.path.join(ncbi_genome_actual, genus)
+        print(f"Trying to create folder:{genus_folder}")
         os.makedirs(genus_folder, exist_ok=True)
 
         # Iterate over accessions for the current genus
@@ -62,7 +63,7 @@ def retrieve_genomes(genera_list):
                 # Check if the file was created
                 if os.path.exists(file_path):
                     print(f"New FASTA file created: {file_path}")
-
+    
 if __name__ == "__main__":
     import sys
 
@@ -74,15 +75,27 @@ if __name__ == "__main__":
     # Get the command-line arguments
     input_argument = sys.argv[1]
 
-    # Check if the input is a CSV file or a list of genera
     if os.path.exists(input_argument):
-        # Read the CSV file
-        genera_csv = pd.read_csv(input_argument)
-        genera_list_csv = input_argument.split()
-        retrieve_genomes(genera_list_csv)
+        # Read the text file with genus names
+        with open(input_argument, 'r') as file:
+            genera_list_txt = [line.strip() for line in file.readlines() if line.strip()]
+
+        if not genera_list_txt:
+            print("No genus names found in the provided file.")
+            sys.exit(1)
+
+        retrieve_genomes(genera_list_txt)
+
     else:
         # Split the input by space
         genera_space = input_argument
         genera_list_space = genera_space.split()
+
+        if not genera_list_space:
+            print("No genus names found in the provided space-separated input.")
+            sys.exit(1)
+
         retrieve_genomes(genera_list_space)
+
+
 

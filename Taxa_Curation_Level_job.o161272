@@ -1,7 +1,0 @@
-WARNING: A conda environment already exists at '/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies'
-Remove existing environment (y/[n])? 
-
-CondaSystemExit: Exiting.
-
-usage: conda [-h] [--no-plugins] [-V] COMMAND ...
-conda: error: argument COMMAND: invalid choice: 'activate' (choose from 'clean', 'compare', 'config', 'create', 'info', 'init', 'install', 'list', 'notices', 'package', 'remove', 'uninstall', 'rename', 'run', 'search', 'update', 'upgrade', 'doctor', 'content-trust', 'env')

@@ -1,0 +1,8 @@
+usage: conda [-h] [--no-plugins] [-V] COMMAND ...
+conda: error: argument COMMAND: invalid choice: 'activate' (choose from 'clean', 'compare', 'config', 'create', 'info', 'init', 'install', 'list', 'notices', 'package', 'remove', 'uninstall', 'rename', 'run', 'search', 'update', 'upgrade', 'doctor', 'env', 'content-trust')
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/phallet/02.Blast_Feed.py", line 59
+    result_handle=NCBIWWW.qblast("blastn",database=database, sequence_data, perc_ident=identity_threshold)
+                                                                                                         ^
+SyntaxError: positional argument follows keyword argument
+usage: conda [-h] [--no-plugins] [-V] COMMAND ...
+conda: error: argument COMMAND: invalid choice: 'deactivate' (choose from 'clean', 'compare', 'config', 'create', 'info', 'init', 'install', 'list', 'notices', 'package', 'remove', 'uninstall', 'rename', 'run', 'search', 'update', 'upgrade', 'doctor', 'content-trust', 'env')

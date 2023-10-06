@@ -1,0 +1,34 @@
+/var/spool/slurmd/job161450/slurm_script: line 21: activate: No such file or directory
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.7.4
+  latest version: 23.9.0
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=23.9.0
+
+
+
+# All requested packages already installed.
+
+Requirement already satisfied: pandas in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (2.1.1)
+Requirement already satisfied: numpy>=1.26.0 in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from pandas) (1.26.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from pandas) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from pandas) (2023.3.post1)
+Requirement already satisfied: tzdata>=2022.1 in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from pandas) (2023.3)
+Requirement already satisfied: six>=1.5 in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)
+Requirement already satisfied: biopython in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (1.81)
+Requirement already satisfied: numpy in /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/dependencies/lib/python3.12/site-packages (from biopython) (1.26.0)
+Traceback (most recent call last):
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/phallet/02.Blast_Feed.py", line 43, in <module>
+    identity_threshold = float(sys.argv[1])
+                         ^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: '-p'

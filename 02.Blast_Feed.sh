@@ -18,7 +18,10 @@ workdir=~/phallet
 cd $workdir 
 
 module load blast
-conda activate dependencies
+source activate dependencies
+conda install pip
+pip install pandas
+pip install biopython
 
 while getopts "p:d:" option; do
     case $option in
@@ -33,5 +36,4 @@ done
 
 python3 02.Blast_Feed.py -p "$identity_threshold" -d "$blast_database"
 
-conda deactivate 
 

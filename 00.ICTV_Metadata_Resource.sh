@@ -1,41 +1,32 @@
 #!/bin/bash
 
-# Get the path to Anaconda or Miniconda from the command line
-if [ -z "$1" ]; then
-    echo "Usage: $0 /path/to/anaconda"
-    exit 1
-fi
-conda_path="$1"
-
 # Initialize conda for bash
-eval "$("$conda_path/bin/" 'shell.bash' 'hook' 2> /dev/null)"
+eval "$(conda 'shell.bash' 'hook' 2> /dev/null)"
 
 # Specify a path where you have write permissions
-conda_env_path="${conda_path}"
+conda_env_path="${CONDA_PREFIX}"
 echo "${conda_env_path}"
 
 # First step is to install crontab as a conda environment
-"$conda_path/bin/conda" create -y -n crocrontab
-source activate "${conda_path}/envs/crocrontab"
+conda create -y -n crocrontab 
+conda activate crocrontab
 
 # Installation through bioconda
-"$conda_path/bin/conda" install -y -c conda-forge crontab
+conda install -y -c conda-forge crontab
 pip install xlsx2csv
 
 # Create the folder for storing ICTV Metadata
 mkdir -p ./Virus_Metadata_Resource
 
-#Create a temporary script file
-echo "#!/bin/bash"> mycron_script
-echo "cd ${PWD}/Virus_Metadata_Resource">> mycron_script
-echo "wget https://ictv.global/vmr/current" >>mycron_script 
-echo "xlsx2csv current VMR.csv" >> mycron_script
+#Delete existing "current" file 
+if [ -f "./Virus_Metadata_Resource/current" ]; then
+    rm ./Virus_Metadata_Resource/current
+fi
 
-#Make executable the script
-chmod +x mycron_script
-
-${PWD}/mycron_script
-cat mycron_script
+#Download latest current file 
+cd ./Virus_Metadata_Resource
+wget https://ictv.global/vmr/current
+xlsx2csv current VMR.csv
 
 # After this, a new crontab job is made
 echo "SHELL=/bin/bash"> mycron
@@ -48,9 +39,7 @@ cat mycron
 crontab mycron
 
 #Clean temporary files
-rm mycron mycron_script
+rm mycron
 
 # To check the status
 crontab -l
-
-

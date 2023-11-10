@@ -28,5 +28,8 @@ cd phallet
 
 chmod +x phallet.sh
 
+For allocate memory for running on local machine 
+ulimit -v unlimited
+
 bash phalllet.sh
 

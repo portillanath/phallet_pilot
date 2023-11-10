@@ -1,7 +1,0 @@
-name: taxa_curation
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-  - nodefaults
-

@@ -1,7 +1,9 @@
 #!/bin/bash
-workdir="~/phallet/enviroments"
-cd $workdir
+workdir="./enviroments"
+cd $workdir || exit
+
 #This Script is made for install all dependencies
+pwd
 
 #Install and create all conda enviroments 
 conda create --name taxa_curation --file taxa_curation.yaml 

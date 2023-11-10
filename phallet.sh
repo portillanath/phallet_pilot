@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#Dependencies install
-bash dependencies.sh
+#Run phallet steps 
 bash 00.ICTV_Metadata_Resource.sh
 bash 01.Taxa_Curation_Level.sh 
 bash 02.Blast_Feed.sh 

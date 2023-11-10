@@ -1,4 +1,4 @@
-GenomeA,GenomeB,ANI,kmer_ani,algorithm
+GenomeA,GenomeB,ani_distance,kmer_ani,algorithm
 FQ312032,FQ312032,100.0,9,fastani
 FQ312032,JX128257,97.9076,9,fastani
 FQ312032,KJ174317,96.8405,9,fastani

@@ -1,4 +1,4 @@
-GenomeA,GenomeB,ANI,kmer_ani,algorithm
+GenomeA,GenomeB,ani_distance,kmer_ani,algorithm
 FQ312032,MT074478,89.87,static,skani
 FQ312032,MT074474,90.64,static,skani
 FQ312032,MT074470,90.31,static,skani

@@ -115,11 +115,11 @@ for subdir in subdirectories:
                     data_fastani = data_fastani.iloc[:, :3]
                     data_fastani['kmer_ani'] = k
                     data_fastani['algorithm'] ="fastani"
-                    data_fastani.columns = ["GenomeA", "GenomeB", "ANI", "kmer_ani","algorithm"]
+                    data_fastani.columns = ["GenomeA", "GenomeB", "ani_distance", "kmer_ani","algorithm"]
                     data_fastani['GenomeA'] = data_fastani['GenomeA'].replace('.*/', '', regex=True)
                     data_fastani['GenomeB'] = data_fastani['GenomeB'].replace('.*/', '', regex=True)
-                    data_fastani['GenomeA'] = data_fastani['GenomeA'].replace('\..*', '', regex=True)
-                    data_fastani['GenomeB'] = data_fastani['GenomeB'].replace('\..*', '', regex=True)
+                    data_fastani['GenomeA'] = data_fastani['GenomeA'].replace('.fasta', '', regex=True)
+                    data_fastani['GenomeB'] = data_fastani['GenomeB'].replace('.fasta', '', regex=True)
                     fastani_results = pd.concat([fastani_results, data_fastani])
                 
             fastani_results.to_csv(os.path.join(workdir, subdir_name, f"fastani_results_{subdir_name}.csv"), index=False)
@@ -134,11 +134,11 @@ for subdir in subdirectories:
                 data_skani['kmer_ani'] = "static"
                 data_skani['algorithm'] ="skani"
                 data_skani=data_skani.drop(index=0)
-                data_skani.columns = ["GenomeA", "GenomeB", "ANI", "kmer_ani","algorithm"]
+                data_skani.columns = ["GenomeA", "GenomeB", "ani_distance", "kmer_ani","algorithm"]
                 data_skani['GenomeA'] = data_skani['GenomeA'].replace('.*/', '', regex=True)
                 data_skani['GenomeB'] = data_skani['GenomeB'].replace('.*/', '', regex=True)
-                data_skani['GenomeA'] = data_skani['GenomeA'].replace('\..*', '', regex=True)
-                data_skani['GenomeB'] = data_skani['GenomeB'].replace('\..*', '', regex=True)
+                data_skani['GenomeA'] = data_skani['GenomeA'].replace('.fasta', '', regex=True)
+                data_skani['GenomeB'] = data_skani['GenomeB'].replace('.fasta', '', regex=True)
                 skani_results = pd.concat([skani_results, data_skani])
             
             skani_results.to_csv(os.path.join(workdir, subdir_name, f"skani_results_{subdir_name}.csv"), index=False)   
@@ -155,8 +155,8 @@ for subdir in subdirectories:
                     data_mash['algorithm'] = "mash"
                     data_mash['GenomeA'] = data_mash['GenomeA'].replace('.*/', '', regex=True)
                     data_mash['GenomeB'] = data_mash['GenomeB'].replace('.*/', '', regex=True)
-                    data_mash['GenomeA'] = data_mash['GenomeA'].replace('\..*', '', regex=True)
-                    data_mash['GenomeB'] = data_mash['GenomeB'].replace('\..*', '', regex=True)
+                    data_mash['GenomeA'] = data_mash['GenomeA'].replace('.fasta', '', regex=True)
+                    data_mash['GenomeB'] = data_mash['GenomeB'].replace('.fasta', '', regex=True)
                     mash_results = pd.concat([mash_results, data_mash])
             mash_results.to_csv(os.path.join(workdir, subdir_name, f"mash_results_{subdir_name}.csv"), index=False)   
 

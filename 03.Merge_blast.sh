@@ -5,7 +5,7 @@ cd $workdir
 
 source ~/miniconda3/bin/activate blast_feed
 Rscript 03.Merge_blast.r
-python3 03.Summary_Feed.py
+python3 08.Summary_Feed.py
 
 source=~/phallet/Blast_Feed
 subdirs=($(find "$source" -mindepth 1 -type d))

@@ -5,7 +5,7 @@ cd $workdir
 
 source ~/miniconda3/bin/activate blast_feed
 
-identity_threshold=50.0
+identity_threshold=50
 blast_database="NCBI,RefSeq"
 
 while getopts "p:d:" option; do

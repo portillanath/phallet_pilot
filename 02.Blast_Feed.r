@@ -1,7 +1,6 @@
 # Load required libraries
 library(seqinr)
 library("xml2")
-library(ggplot2)
 
 #Read command-line arguments 
 args<-commandArgs(trailingOnly=TRUE)

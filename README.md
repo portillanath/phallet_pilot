@@ -21,6 +21,9 @@ rm -rf ~/miniconda3/miniconda.sh
 
 2. Install all dependencies
 
+Inside the installation 
+https://github.com/Mbed-TLS/mbedtls
+
 chmod +x dependencies.sh
   
 4. Run the default mode 

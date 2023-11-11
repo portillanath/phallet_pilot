@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Date:11/11/2023
+
 # Set default values
 identity_threshold=50
 default_databases=("NCBI" "ReqSeq")

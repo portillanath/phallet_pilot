@@ -20,9 +20,10 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init bash
 
 2. Install all dependencies
+
 chmod +x dependencies.sh
   
-3. Run the default mode 
+4. Run the default mode 
 
 cd phallet
 

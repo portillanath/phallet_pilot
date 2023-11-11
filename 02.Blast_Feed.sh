@@ -3,7 +3,7 @@
 workdir=~/phallet
 cd $workdir 
 
-source ~/miniconda3/bin/activate blast_feed
+source ~/miniconda3/bin/activate taxa_curation
 
 identity_threshold=50
 blast_database="NCBI,RefSeq"
@@ -19,7 +19,6 @@ while getopts "p:d:" option; do
     esac
 done
 
-Rscript 02.Blast_Feed.r -p "$identity_threshold" -d "$blast_database" > blast_feed.log 2>&1
+python3 02.Blast_Feed.py -p "$identity_threshold" -d "$blast_database" > blast_feed.log 2>&1
 
 cat blast_feed.log
-

@@ -20,13 +20,20 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init bash
 
 2. Install all dependencies
+
+Inside the installation 
+https://github.com/Mbed-TLS/mbedtls
+
 chmod +x dependencies.sh
   
-3. Run the default mode 
+4. Run the default mode 
 
 cd phallet
 
 chmod +x phallet.sh
+
+For allocate memory for running on local machine 
+ulimit -v unlimited
 
 bash phalllet.sh
 

@@ -27,9 +27,6 @@ done
 
 # It is necesary to install the C library MbedTLS 
 
-
-#!/bin/bash
-
 # Function to download and install BLAST+ on Linux
 install_blast_linux() {
     echo "Downloading and installing BLAST+ on Linux..."

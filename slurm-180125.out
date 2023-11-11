@@ -1,6 +1,0 @@
-Processing files in Taxa_Selected
-Running BLAST for: ./Taxa_Selected/Tequintavirus/MH203051.fasta on database: RefSeq
-Warning: [blastn] Error initializing remote BLAST database data loader: Nucleotide BLAST database 'RefSeq' does not exist in the NCBI servers
-BLAST Database error: 'RefSeq' not found on NCBI servers.
-
-Error running BLAST for: ./Taxa_Selected/Tequintavirus/MH203051.fasta on database: RefSeq

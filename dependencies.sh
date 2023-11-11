@@ -1,6 +1,6 @@
 #!/bin/bash
 #Dependencies Installation
-#All changes for run local
+
 workdir="./enviroments"
 cd "$workdir" || exit
 

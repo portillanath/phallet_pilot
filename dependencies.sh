@@ -1,5 +1,6 @@
 #!/bin/bash
 #Dependencies Installation
+#All changes are save now 
 
 workdir="./enviroments"
 cd "$workdir" || exit

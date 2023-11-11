@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Date:11/11/2023
+#This script will run blastn for each fasta file in the Taxa_Selected directory
 
 # Set default values
 identity_threshold=50

@@ -1,6 +1,6 @@
 #!/bin/bash
 #Dependencies Installation
-#All changes are save now 
+#All changes are save now, but not commited
 
 workdir="./enviroments"
 cd "$workdir" || exit

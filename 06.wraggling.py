@@ -23,10 +23,16 @@ for genus in subdirectories:
     if not os.path.exists(genus_dir):
         os.makedirs(genus_dir)
 
-        # Move all the file in workdir that match with the genus
-        files_to_move = glob(os.path.join(workdir, f"*{genus_name}*"))
-        for file in files_to_move:
-            os.rename(file, os.path.join(genus_dir, os.path.basename(file) + "_new"))
+    # Move all the files in workdir that match with the genus
+    files_to_move = glob(os.path.join(workdir, f"*{genus_name}*"))
+    for file in files_to_move:
+        if os.path.isdir(file):
+            # Move the contents of the directory instead of the directory itself
+            for subfile in os.listdir(file):
+                os.rename(os.path.join(file, subfile), os.path.join(genus_dir, subfile))
+            os.rmdir(file)
+        else:
+            os.rename(file, os.path.join(genus_dir, os.path.basename(file)))
 
 # Read command-line arguments
 args = sys.argv[1:]

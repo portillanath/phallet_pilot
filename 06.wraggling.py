@@ -1,5 +1,3 @@
-
-# Set paths
 import os
 import re
 import sys
@@ -8,7 +6,6 @@ from glob import glob
 import numpy as np
 from scipy.spatial.distance import pdist
 from scipy.spatial.distance import squareform
-
 
 # Set paths
 source = os.path.expanduser("~/phallet/Blast_Feed")
@@ -19,22 +16,19 @@ workdir = os.path.expanduser("~/phallet/Metrics_Results")
 for genus in subdirectories:
     genus_name = os.path.basename(os.path.normpath(genus))
     genus_dir = os.path.join(workdir, genus_name)
-    # Check if the directory already exists
+     # Check if the directory already exists
     if not os.path.exists(genus_dir):
         os.makedirs(genus_dir)
+    #Move all the files to the corresponding directory
+    if os.path.exists(genus_dir):
+        files_to_move = [f for f in os.listdir(workdir) if os.path.isfile(os.path.join(workdir, f)) and genus_name in f]
+        dirs_to_move= [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d)) and f"signatures_{genus_name}" in d]
+        for file in files_to_move:
+           os.rename(file, os.path.join(genus_dir,file))
+        for dir in dirs_to_move:
+            os.rename(dir, os.path.join(genus_dir,dir))
 
-    # Move all the files in workdir that match with the genus
-    files_to_move = glob(os.path.join(workdir, f"*{genus_name}*"))
-    for file in files_to_move:
-        if os.path.isdir(file):
-            # Move the contents of the directory instead of the directory itself
-            for subfile in os.listdir(file):
-                os.rename(os.path.join(file, subfile), os.path.join(genus_dir, subfile))
-            os.rmdir(file)
-        else:
-            os.rename(file, os.path.join(genus_dir, os.path.basename(file)))
-
-# Read command-line arguments
+#Read command-line arguments
 args = sys.argv[1:]
 mx = "ani"
 kmersx = [12, 11, 10, 9, 8]
@@ -196,4 +190,3 @@ for subdir in subdirectories:
     ani_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"ani_metrics_{subdir_name}.csv"), index=False)
     mash_metrics_result=pd.concat([mash_results,sourmash_results])
     mash_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"mash_metrics_{subdir_name}.csv"), index=False)
-         

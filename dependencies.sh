@@ -10,7 +10,7 @@ pwd
 
 # Array of YAML files
 
-yaml_files=("taxa_curation.yaml" "blast_feed.yaml" "ANI.yaml" "wraggling_metrics.yaml")
+yaml_files=("taxa_curation.yaml" "blast_feed.yaml" "ANI.yaml" "wraggling_metrics.yaml" "mash.yaml")
 
 # Loop through YAML files and create Conda environments
 for file in "${yaml_files[@]}"; do

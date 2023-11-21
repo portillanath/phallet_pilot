@@ -1,4 +1,4 @@
-#Date Change: 14/11/2023
+
 import os
 import re
 import sys
@@ -191,3 +191,4 @@ for subdir in subdirectories:
     ani_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"ani_metrics_{subdir_name}.csv"), index=False)
     mash_metrics_result=pd.concat([mash_results,sourmash_results])
     mash_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"mash_metrics_{subdir_name}.csv"), index=False)
+    

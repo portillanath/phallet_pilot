@@ -106,8 +106,8 @@ for genus in subdirectories:
 # Check if there are any valid combinations of kmer_values_mx and kmer_values_my
             fig.text(0.04, 0.04, algorithm_my, va='center', rotation='vertical')
 
-            for i, mx_kmer in enumerate(kmer_values_mx):
-                for j, my_kmer in enumerate(kmer_values_my):
+            for j, my_kmer in enumerate(kmer_values_my):
+                for i, mx_kmer in enumerate(kmer_values_mx):
         # Subset the data for the current kmer_mx and kmer_my
                     df_subset_mx_kmer = df_subset_mx[df_subset_mx[f"kmer_{mx}"] == mx_kmer] 
                     df_subset_my_kmer = df_subset_my[df_subset_my[f"kmer_{my}"] == my_kmer]
@@ -119,11 +119,12 @@ for genus in subdirectories:
                     ax.set_title(f"{algorithm_mx} kmer: {kmer_values_mx[i]}",fontsize=6)
                     ax.tick_params(axis='both', which='major',labelsize=4) 
                     ax.scatter(merged_df[f"{mx}_distance"],merged_df[f"{my}_distance"],alpha=0.5,s=0.5)
-                    ax.set_ylabel(f"{algorithm_my} kmer: {kmer_values_my[j]}", rotation=90, ha='right',fontsize=6)
+                    ax.set_ylabel(f"{algorithm_my} kmer: {kmer_values_my[j]}", rotation=90, ha='center',fontsize=6)
                     ax.yaxis.set_label_coords(-0.2, 0.5) 
-                              
+        #Set the order of the subplot
+            plt.subplots_adjust(left=0.1,right=0.9, top=0.9, bottom=0.1, wspace=0.1, hspace=0.2)
+         
         # Save the current figure to a PDF file if there are valid combinations
             pdf_filename = f"{genus_name}_{algorithm_mx}_{algorithm_my}.pdf"
             with PdfPages(pdf_filename) as pdf:
                 pdf.savefig(fig)
-      

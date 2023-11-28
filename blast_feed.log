@@ -1255,6 +1255,9 @@ Error: NCBI C++ Exception:
     T0 "/opt/conda/conda-bld/blast_1537407096784/work/c++/src/serial/rpcbase.cpp", line 244: Error: ncbi::CRPCClient_Base::x_Ask() - Failed to receive reply after 3 tries
 
 Blast result obtained for: Cheoctovirus 
+
+Error download RefSeq sequence:  JN542517 
+Error: cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=JN542517&rettype=fasta&retmode=text' 
 Warning: [blastn] Unavailable feature GNUTLS
 Critical: [blastn] Unavailable feature GNUTLS
 Error: (303.7) [blastn] [URL_Connect; https://www.ncbi.nlm.nih.gov:443/Service/dispd.cgi?service=blast4&address=nodea-6(172.18.101.87)&platform=x86_64-unknown-linux-gnu]  Failed to connect: Not supported
@@ -3103,6 +3106,9 @@ Error: NCBI C++ Exception:
     T0 "/opt/conda/conda-bld/blast_1537407096784/work/c++/src/serial/rpcbase.cpp", line 244: Error: ncbi::CRPCClient_Base::x_Ask() - Failed to receive reply after 3 tries
 
 Blast result obtained for: Cheoctovirus 
+
+Error download sequence:  MF190168 
+Error: cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=MF190168&rettype=fasta&retmode=text' 
 Warning: [blastn] Unavailable feature GNUTLS
 Critical: [blastn] Unavailable feature GNUTLS
 Error: (303.7) [blastn] [URL_Connect; https://www.ncbi.nlm.nih.gov:443/Service/dispd.cgi?service=blast4&address=nodea-6(172.18.101.87)&platform=x86_64-unknown-linux-gnu]  Failed to connect: Not supported
@@ -9837,6 +9843,9 @@ Error: NCBI C++ Exception:
     T0 "/opt/conda/conda-bld/blast_1537407096784/work/c++/src/serial/rpcbase.cpp", line 244: Error: ncbi::CRPCClient_Base::x_Ask() - Failed to receive reply after 3 tries
 
 Blast result obtained for: Kuttervirus 
+
+Error download sequence:  KF669653 
+Error: cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=KF669653&rettype=fasta&retmode=text' 
 Warning: [blastn] Unavailable feature GNUTLS
 Critical: [blastn] Unavailable feature GNUTLS
 Error: (303.7) [blastn] [URL_Connect; https://www.ncbi.nlm.nih.gov:443/Service/dispd.cgi?service=blast4&address=nodea-6(172.18.101.87)&platform=x86_64-unknown-linux-gnu]  Failed to connect: Not supported
@@ -17494,6 +17503,9 @@ Error: NCBI C++ Exception:
     T0 "/opt/conda/conda-bld/blast_1537407096784/work/c++/src/serial/rpcbase.cpp", line 244: Error: ncbi::CRPCClient_Base::x_Ask() - Failed to receive reply after 3 tries
 
 Blast result obtained for: Skunavirus 
+
+Error download sequence:  MN552150 
+Error: cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=MN552150&rettype=fasta&retmode=text' 
 Warning: [blastn] Unavailable feature GNUTLS
 Critical: [blastn] Unavailable feature GNUTLS
 Error: (303.7) [blastn] [URL_Connect; https://www.ncbi.nlm.nih.gov:443/Service/dispd.cgi?service=blast4&address=nodea-6(172.18.101.87)&platform=x86_64-unknown-linux-gnu]  Failed to connect: Not supported
@@ -20267,3 +20279,12 @@ Error: NCBI C++ Exception:
     T0 "/opt/conda/conda-bld/blast_1537407096784/work/c++/src/serial/rpcbase.cpp", line 244: Error: ncbi::CRPCClient_Base::x_Ask() - Failed to receive reply after 3 tries
 
 Blast result obtained for: Tequintavirus 
+Warning messages:
+1: In download.file(url, output_file, quiet = TRUE, mode = "wb") :
+  cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=JN542517&rettype=fasta&retmode=text': HTTP status was '502 Bad Gateway'
+2: In download.file(url, output_file, quiet = TRUE, mode = "wb") :
+  cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=MF190168&rettype=fasta&retmode=text': HTTP status was '502 Bad Gateway'
+3: In download.file(url, output_file, quiet = TRUE, mode = "wb") :
+  cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=KF669653&rettype=fasta&retmode=text': HTTP status was '502 Bad Gateway'
+4: In download.file(url, output_file, quiet = TRUE, mode = "wb") :
+  cannot open URL 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=MN552150&rettype=fasta&retmode=text': HTTP status was '502 Bad Gateway'

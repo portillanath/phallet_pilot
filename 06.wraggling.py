@@ -25,9 +25,11 @@ for genus in subdirectories:
         files_to_move = [f for f in os.listdir(workdir) if os.path.isfile(os.path.join(workdir, f)) and genus_name in f]
         dirs_to_move= [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d)) and f"signatures_{genus_name}" in d]
         for file in files_to_move:
-           os.rename(file, os.path.join(genus_dir,file))
+            if os.path.exists(file):
+               os.rename(file, os.path.join(genus_dir,file))
         for dir in dirs_to_move:
-            os.rename(dir, os.path.join(genus_dir,dir))
+            if os.path.exists(dir):
+               os.rename(dir, os.path.join(genus_dir,dir))
 
 #Read command-line arguments
 args = sys.argv[1:]
@@ -191,4 +193,4 @@ for subdir in subdirectories:
     ani_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"ani_metrics_{subdir_name}.csv"), index=False)
     mash_metrics_result=pd.concat([mash_results,sourmash_results])
     mash_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"mash_metrics_{subdir_name}.csv"), index=False)
- 
+    

@@ -24,7 +24,7 @@ while getopts "k:f:g:" opt; do
 done
 
 #Activate conda enviroment 
-source ~/miniconda3/bin/activate ANI
+source activate ANI
 
 # Create variables for paths
 source=~/phallet/Blast_Feed
@@ -62,7 +62,7 @@ for subdir in "${subdirs[@]}"; do
   skani triangle "$source/${genusname}/"*.fasta -E > "skani_distance_${genusname}.txt"
   mv *.txt $outdir
 
-  for frag_len in "${frag_lengths[@]}"; do
+for frag_len in "${frag_lengths[@]}"; do
     for k in "${kmers[@]}"; do
        #average_nucleotide_identity.py -i "${subdir_basename}.list" -o "${subdir}/fastani_${subdir_basename}_frag_${frag_len}_${k}" --method ANIb
       fastANI --ql "$outdir/${genusname}.list" --rl "$outdir/${genusname}.list" -o "${outdir}/fastani_${genusname}_frag_${frag_len}_${k}" --fragLen "${frag_len}" --kmer "${k}"

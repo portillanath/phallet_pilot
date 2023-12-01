@@ -1,8 +1,8 @@
 #!/bin/bash
-
+data_default=~/phallet/test_genus.txt
 #Run phallet steps 
 bash 00.ICTV_Metadata_Resource.sh
-bash 01.Taxa_Curation_Level.sh $1
+bash 01.Taxa_Curation_Level.sh $data_default
 bash 02.Blast_Feed.sh 
 bash 03.Merge_blast.sh 
 bash 04.Mash_Metrics.sh

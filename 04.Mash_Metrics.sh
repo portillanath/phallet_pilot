@@ -39,7 +39,7 @@ for subdir in "${subdirs[@]}"; do
 
   # MASH ALGORITHM
   # Load mash and sourmash
-  source ~/miniconda3/bin/activate mash
+  source activate mash
 
   # Create a sketch of all the sequences
   # Use 64-bit hashes and a sketch default of 1000

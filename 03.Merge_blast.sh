@@ -3,7 +3,7 @@
 workdir=~/phallet/
 cd $workdir
 
-source ~/miniconda3/bin/activate blast_feed
+source activate blast_feed
 Rscript 03.Merge_blast.r
 python3 08.Summary_Feed.py
 

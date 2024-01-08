@@ -19,18 +19,25 @@ for genus in subdirectories:
     genus_dir = os.path.join(workdir, genus_name)
      # Check if the directory already exists
     if not os.path.exists(genus_dir):
-        os.makedirs(genus_dir)
+       os.makedirs(genus_dir)
     #Move all the files to the corresponding directory
     if os.path.exists(genus_dir):
         files_to_move = [f for f in os.listdir(workdir) if os.path.isfile(os.path.join(workdir, f)) and genus_name in f]
         dirs_to_move= [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d)) and f"signatures_{genus_name}" in d]
+       
         for file in files_to_move:
-            if os.path.exists(file):
-               os.rename(file, os.path.join(genus_dir,file))
-        for dir in dirs_to_move:
-            if os.path.exists(dir):
-               os.rename(dir, os.path.join(genus_dir,dir))
+           source_path = os.path.join(workdir, file)
+           destination_path = os.path.join(genus_dir, file)
+    
+           if os.path.exists(source_path):
+              os.rename(source_path, destination_path)
 
+        for dir in dirs_to_move:
+            source_path = os.path.join(workdir, dir)
+            destination_path = os.path.join(genus_dir, dir)
+            if os.path.exists(source_path):
+              os.rename(source_path, destination_path)
+   
 #Read command-line arguments
 args = sys.argv[1:]
 mx = "ani"
@@ -52,8 +59,8 @@ if len(args) > 3:
     kmersy = list(map(int, args[3].split(",")))
 
 # Set up directories on workdir
-subdirectories = [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d))]
-
+subdirectories_results = [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d))]
+print(subdirectories_results)
 # SEARCH FOR OUTPUT FILES
 # Recover possible algorithms for each metric of the pairwise correlation
 # Cases for metrics selected available
@@ -92,27 +99,30 @@ skani_results = pd.DataFrame()
 mash_results =pd.DataFrame()
 sourmash_results=pd.DataFrame()
 
-for subdir in subdirectories:
+for subdir in subdirectories_results:
     os.chdir(workdir)
-    if not os.path.exists(subdir):
-        continue
-    subdir_name = os.path.basename(subdir)
-    genomes=[]
-    for m in metrics:
-        if m == mx:
-            tool_list = tool_mx
-            kmers = kmersx
-        if m == my:
-            tool_list = tool_my
-            kmers = kmersy
+    if os.path.exists(subdir):
+       subdir_name = os.path.basename(subdir)
+       print(subdir_name)
+       if "signatures" in subdir_name:
+          continue
+       
+       genomes=[]
+       for m in metrics:
+           if m == mx:
+              tool_list = tool_mx
+              kmers = kmersx
+           if m == my:
+              tool_list = tool_my
+              kmers = kmersy
 
-        for tool in tool_list:
-
-            # In case of having fastani metrics
+           for tool in tool_list:
+# In case of having fastani metrics
             if tool == "fastani":
                 files_fastani = glob(os.path.join(workdir, subdir_name, "fastani*"))
                 files_fastani = [file for file in files_fastani if not file.endswith('.csv')]
                 for file in files_fastani:
+                    print(file)
                     k = int(file.split("_")[-1].split(".")[0])
                     data_fastani = pd.read_csv(file, header=None, sep='\t')
                     data_fastani = data_fastani.iloc[:, :3]
@@ -124,43 +134,45 @@ for subdir in subdirectories:
                     data_fastani['GenomeA'] = data_fastani['GenomeA'].replace('.fasta', '', regex=True)
                     data_fastani['GenomeB'] = data_fastani['GenomeB'].replace('.fasta', '', regex=True)
                     fastani_results = pd.concat([fastani_results, data_fastani])
-                
+                    print(fastani_results)
+                    
             fastani_results.to_csv(os.path.join(workdir, subdir_name, f"fastani_results_{subdir_name}.csv"), index=False)
             
             # In case of having skani metrics
             if tool=="skani":
-             files_skani = glob(os.path.join(workdir, subdir_name, "skani*"))
-             files_skani = [file for file in files_skani if not file.endswith('.csv')]
-             for file in files_skani:  
-                data_skani = pd.read_csv(file, header=None, sep='\t', names=["Ref_file","Query_file","ANI","Align_fraction_ref","Align_fraction_query","Ref_name","Query_name"])
-                data_skani = data_skani.iloc[:, :3]
-                data_skani['kmer_ani'] = "static"
-                data_skani['algorithm'] ="skani"
-                data_skani=data_skani.drop(index=0)
-                data_skani.columns = ["GenomeA", "GenomeB", "ani_distance", "kmer_ani","algorithm"]
-                data_skani['GenomeA'] = data_skani['GenomeA'].replace('.*/', '', regex=True)
-                data_skani['GenomeB'] = data_skani['GenomeB'].replace('.*/', '', regex=True)
-                data_skani['GenomeA'] = data_skani['GenomeA'].replace('.fasta', '', regex=True)
-                data_skani['GenomeB'] = data_skani['GenomeB'].replace('.fasta', '', regex=True)
-                skani_results = pd.concat([skani_results, data_skani])
-            
+                files_skani = glob(os.path.join(workdir, subdir_name, "skani*"))
+                files_skani = [file for file in files_skani if not file.endswith('.csv')]
+                for file in files_skani:  
+                    data_skani = pd.read_csv(file, header=None, sep='\t', names=["Ref_file","Query_file","ANI","Align_fraction_ref","Align_fraction_query","Ref_name","Query_name"])
+                    data_skani = data_skani.iloc[:, :3]
+                    data_skani['kmer_ani'] = "static"
+                    data_skani['algorithm'] ="skani"
+                    data_skani = data_skani.iloc[1:]
+                    data_skani.columns = ["GenomeA", "GenomeB", "ani_distance", "kmer_ani","algorithm"]
+                    data_skani['GenomeA'] = data_skani['GenomeA'].replace('.*/', '', regex=True)
+                    data_skani['GenomeB'] = data_skani['GenomeB'].replace('.*/', '', regex=True)
+                    data_skani['GenomeA'] = data_skani['GenomeA'].replace('.fasta', '', regex=True)
+                    data_skani['GenomeB'] = data_skani['GenomeB'].replace('.fasta', '', regex=True)
+                    skani_results = pd.concat([skani_results, data_skani])
+                    print(fastani_results)
+                
             skani_results.to_csv(os.path.join(workdir, subdir_name, f"skani_results_{subdir_name}.csv"), index=False)   
             
             # In case of having mash metrics
             if tool=="mash":
-             files_mash = glob(os.path.join(workdir, subdir_name, "mash*.tab"))
-             for file in files_mash:
-                k = int(re.search(r'k(\d+)', file).group(1))
-                if k in kmers:
-                    data_mash = pd.read_csv(file, header=None, names=["GenomeA", "GenomeB", "mash_distance", "p-value", "shared_hashes"], sep='\t')
-                    data_mash = data_mash.iloc[:, :3]
-                    data_mash['kmer_mash'] = k
-                    data_mash['algorithm'] = "mash"
-                    data_mash['GenomeA'] = data_mash['GenomeA'].replace('.*/', '', regex=True)
-                    data_mash['GenomeB'] = data_mash['GenomeB'].replace('.*/', '', regex=True)
-                    data_mash['GenomeA'] = data_mash['GenomeA'].replace('.fasta', '', regex=True)
-                    data_mash['GenomeB'] = data_mash['GenomeB'].replace('.fasta', '', regex=True)
-                    mash_results = pd.concat([mash_results, data_mash])
+                files_mash = glob(os.path.join(workdir, subdir_name, "mash*.tab"))
+                for file in files_mash:
+                         k = int(re.search(r'k(\d+)', file).group(1))
+                         if k in kmers:
+                            data_mash = pd.read_csv(file, header=None, names=["GenomeA", "GenomeB", "mash_distance", "p-value", "shared_hashes"], sep='\t')
+                            data_mash = data_mash.iloc[:, :3]
+                            data_mash['kmer_mash'] = k
+                            data_mash['algorithm'] = "mash"
+                            data_mash['GenomeA'] = data_mash['GenomeA'].replace('.*/', '', regex=True)
+                            data_mash['GenomeB'] = data_mash['GenomeB'].replace('.*/', '', regex=True)
+                            data_mash['GenomeA'] = data_mash['GenomeA'].replace('.fasta', '', regex=True)
+                            data_mash['GenomeB'] = data_mash['GenomeB'].replace('.fasta', '', regex=True)
+                            mash_results = pd.concat([mash_results, data_mash])
             mash_results.to_csv(os.path.join(workdir, subdir_name, f"mash_results_{subdir_name}.csv"), index=False)   
 
             # In case of having sourmash metrics

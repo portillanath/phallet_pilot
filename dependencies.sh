@@ -28,4 +28,10 @@ for file in "${yaml_files[@]}"; do
   fi
 done
 
+conda activate mash
+conda install -n mash mkl-service
+conda install -n mash numpy --update-deps
+conda deactivate
+
+
 

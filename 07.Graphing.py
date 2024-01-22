@@ -98,13 +98,15 @@ for genus in subdirectories:
                 kmer_values_my = sorted(pd.unique(df_subset_my[f"kmer_{my}"]))
    
 # Create a scatterplot for each kmer combination
+        if len(kmer_values_mx) > 0 and len(kmer_values_my) > 0:
             fig, axes = plt.subplots(len(kmer_values_mx), len(kmer_values_my), figsize=(12,8), sharex=True)
             axes = axes.reshape(len(kmer_values_mx), len(kmer_values_my))
-            
             kmer_values_mx.sort()
             kmer_values_my.sort(reverse=True)
 # Check if there are any valid combinations of kmer_values_mx and kmer_values_my
             fig.text(0.04, 0.04, algorithm_my, va='center', rotation='vertical')
+        else:
+            print("kmer_values_mx or kmer_values_my is empty. Cannot create subplots.")
 
             for j, my_kmer in enumerate(kmer_values_my):
                 for i, mx_kmer in enumerate(kmer_values_mx):
@@ -128,3 +130,4 @@ for genus in subdirectories:
             pdf_filename = f"{genus_name}_{algorithm_mx}_{algorithm_my}.pdf"
             with PdfPages(pdf_filename) as pdf:
                 pdf.savefig(fig)
+      

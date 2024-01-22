@@ -19,6 +19,8 @@ while getopts "k:g:" opt;do
 done
 
 # Create variables for paths
+
+echo time 
 source=~/phallet/Blast_Feed
 mkdir -p Metrics_Results
 outdir=~/phallet/Metrics_Results
@@ -81,6 +83,7 @@ for k in ${kmers[@]}; do
 done
 
 mv sourmash* $outdir
+echo time 
 
 done
 

@@ -31,6 +31,9 @@ done
 conda activate mash
 conda install -n mash mkl-service
 conda install -n mash numpy --update-deps
+conda activate ANI
+conda install -c conda-forge libgcc-ng 
+conda deactivate ANI
 conda deactivate
 
 

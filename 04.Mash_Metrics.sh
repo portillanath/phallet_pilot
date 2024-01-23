@@ -20,7 +20,7 @@ done
 
 # Create variables for paths
 
-echo time 
+echo $(time) 
 source=~/phallet/Blast_Feed
 mkdir -p Metrics_Results
 outdir=~/phallet/Metrics_Results
@@ -83,7 +83,7 @@ for k in ${kmers[@]}; do
 done
 
 mv sourmash* $outdir
-echo time 
+echo $(time) 
 
 done
 

@@ -7,6 +7,11 @@ Requirements
 
 Linux/MacOS
 
+En el caso de Ubuntu 22.00 es necesario tener las dependencias: 
+
+conda install bioconda::fastani
+conda install -c conda-forge libgcc-ng
+
 mkdir -p ~/miniconda3
 
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/

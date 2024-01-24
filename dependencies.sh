@@ -34,8 +34,9 @@ conda install -n mash numpy --update-deps
 conda activate ANI
 conda install -c conda-forge libgcc-ng 
 conda deactivate ANI
-git clone https://github.com/bluenote-1577/skani.git
-cargo install --path . --root ~/.cargo
+wget https://github.com/bluenote-1577/skani/releases/download/latest/skani
+chmod +x skani
+./skani -h
 conda deactivate
 
 

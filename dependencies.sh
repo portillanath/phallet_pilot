@@ -32,11 +32,6 @@ conda activate mash
 conda install -n mash mkl-service
 conda install -n mash numpy --update-deps
 conda activate ANI
-conda install -c conda-forge libgcc-ng 
-conda deactivate ANI
-wget https://github.com/bluenote-1577/skani/releases/download/latest/skani
-chmod +x skani
-./skani -h
 conda deactivate
 
 

@@ -6,8 +6,6 @@
 workdir=~/phallet
 cd $workdir 
 
-source ~/miniconda3/bin/activate wraggling_metrics
-
 kmersy=(15,17,20,21,24)
 kmersx=(12,11,10,9,8)
 my="mash"
@@ -24,7 +22,7 @@ while getopts "mx:kmersx:my:kmersy" option; do
         my) #Handle the -my flag with an argument
         my=${OPTARG}
         ;;
-        kmersy) #Handle the -kmersy flag with an argument
+        kmersy) #Handle the -kmersy flag with an argumentcd
         kmersy=${OPTARG}
         ;;
     esac
@@ -32,5 +30,3 @@ done
 
 python3 07.Graphing.py -mx "$mx" -kmersx "$kmersx" -my "$my" -kmersy "$kmersy" > Graphing.log 2>&1
 cat Graphing.log
-
-conda deactivate 

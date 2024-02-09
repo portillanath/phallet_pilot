@@ -1,0 +1,85 @@
+/hpcfs/home/ciencias_biologicas/na.portilla10/phallet/enviroments
+Creating Conda environment 'taxa_curation' from 'taxa_curation.yaml'
+Collecting package metadata (repodata.json): ...working... ERROR conda.auxlib.logz:stringify(171): 
+Traceback (most recent call last):
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 165, in stringify
+    requests_models_Response_builder(builder, obj)
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 143, in requests_models_Response_builder
+    content = dumps(resp, indent=2)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+MemoryError
+ERROR conda.auxlib.logz:stringify(171): 
+Traceback (most recent call last):
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 165, in stringify
+    requests_models_Response_builder(builder, obj)
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 141, in requests_models_Response_builder
+    resp = response_object.json()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/requests/models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+                             ^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/requests/models.py", line 932, in text
+    content = str(self.content, encoding, errors="replace")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+failed
+
+CondaMemoryError: The conda process ran out of memory. Increase system memory and/or try again.
+
+Creating Conda environment 'blast_feed' from 'blast_feed.yaml'
+Collecting package metadata (repodata.json): ...working... ERROR conda.auxlib.logz:stringify(171): 
+Traceback (most recent call last):
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 165, in stringify
+    requests_models_Response_builder(builder, obj)
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/conda/auxlib/logz.py", line 141, in requests_models_Response_builder
+    resp = response_object.json()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/site-packages/requests/models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/lib/python3.11/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+failed
+
+CondaMemoryError: The conda process ran out of memory. Increase system memory and/or try again.
+
+Creating Conda environment 'ANI' from 'ANI.yaml'
+Collecting package metadata (repodata.json): ...working... failed
+
+CondaMemoryError: The conda process ran out of memory. Increase system memory and/or try again.
+
+Creating Conda environment 'wraggling_metrics' from 'wraggling_metrics.yaml'
+Collecting package metadata (repodata.json): ...working... failed
+
+CondaMemoryError: The conda process ran out of memory. Increase system memory and/or try again.
+
+Creating Conda environment 'mash' from 'mash.yaml'
+Collecting package metadata (repodata.json): ...working... failed
+
+CondaMemoryError: The conda process ran out of memory. Increase system memory and/or try again.
+
+
+EnvironmentNameNotFound: Could not find conda environment: mash
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentLocationNotFound: Not a conda environment: /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/mash
+
+
+EnvironmentLocationNotFound: Not a conda environment: /hpcfs/home/ciencias_biologicas/na.portilla10/miniconda3/envs/mash
+

@@ -87,26 +87,24 @@ for genus in subdirectories:
             
 # Assuming merged_df is your DataFrame
     for algorithm_mx in tool_mx:
-        for algorithm_my in tool_my:
-        # Subset the data for the current combination
-            if "algorithm" in mx_data.columns:
-                df_subset_mx = mx_data[mx_data["algorithm"] == algorithm_mx] 
-                kmer_values_mx = sorted(pd.unique(df_subset_mx[f"kmer_{mx}"])) 
+     for algorithm_my in tool_my:
+       # Subset the data for the current combination
+         if "algorithm" in mx_data.columns:
+             df_subset_mx = mx_data[mx_data["algorithm"] == algorithm_mx] 
+             kmer_values_mx = sorted(pd.unique(df_subset_mx[f"kmer_{mx}"])) 
 
-            if "algorithm" in my_data.columns:
-                df_subset_my = my_data[my_data["algorithm"] == algorithm_my]
-                kmer_values_my = sorted(pd.unique(df_subset_my[f"kmer_{my}"]))
+         if "algorithm" in my_data.columns:
+             df_subset_my = my_data[my_data["algorithm"] == algorithm_my]
+             kmer_values_my = sorted(pd.unique(df_subset_my[f"kmer_{my}"]))
    
 # Create a scatterplot for each kmer combination
-        if len(kmer_values_mx) > 0 and len(kmer_values_my) > 0:
+         if len(kmer_values_mx) > 0 and len(kmer_values_my) > 0:
             fig, axes = plt.subplots(len(kmer_values_mx), len(kmer_values_my), figsize=(12,8), sharex=True)
             axes = axes.reshape(len(kmer_values_mx), len(kmer_values_my))
             kmer_values_mx.sort()
             kmer_values_my.sort(reverse=True)
 # Check if there are any valid combinations of kmer_values_mx and kmer_values_my
             fig.text(0.04, 0.04, algorithm_my, va='center', rotation='vertical')
-        else:
-            print("kmer_values_mx or kmer_values_my is empty. Cannot create subplots.")
 
             for j, my_kmer in enumerate(kmer_values_my):
                 for i, mx_kmer in enumerate(kmer_values_mx):

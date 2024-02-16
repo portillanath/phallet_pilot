@@ -10,7 +10,7 @@ pwd
 
 # Array of YAML files
 
-yaml_files=("taxa_curation.yaml" "blast_feed.yaml" "ANI.yaml" "wraggling_metrics.yaml" "mash.yaml")
+yaml_files=("dependencies.yaml")
 
 eval "$(conda shell.bash hook)"
 # Loop through YAML files and create Conda environments
@@ -28,10 +28,7 @@ for file in "${yaml_files[@]}"; do
   fi
 done
 
-conda activate mash
-conda install -n mash mkl-service
-conda install -n mash numpy --update-deps
-conda deactivate
+
 
 
 

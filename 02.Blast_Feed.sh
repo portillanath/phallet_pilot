@@ -3,7 +3,7 @@
 workdir=~/phallet
 cd $workdir 
 
-source ~/miniconda3/bin/activate blast_feed
+#source ~/miniconda3/bin/activate blast_feed
 
 identity_threshold=50
 blast_database="NCBI,RefSeq"

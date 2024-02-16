@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
 # Set working directory
-workdir = os.path.expanduser("~/phallet/Metrics_Results")
+workdir = os.path.expanduser("~/phallet_graph/Metrics_Results")
 subdirectories = [os.path.join(workdir, name) for name in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, name))]
 print(subdirectories)
 

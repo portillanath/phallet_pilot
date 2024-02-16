@@ -9,9 +9,9 @@ from scipy.spatial.distance import pdist
 from scipy.spatial.distance import squareform
 
 # Set paths
-source = os.path.expanduser("~/phallet/Blast_Feed")
+source = os.path.expanduser("~/phallet_graph/Blast_Feed")
 subdirectories = [d for d in os.listdir(source)]
-workdir = os.path.expanduser("~/phallet/Metrics_Results")
+workdir = os.path.expanduser("~/phallet_graph/Metrics_Results")
 
 # Create output directories
 for genus in subdirectories:
@@ -60,7 +60,6 @@ if len(args) > 3:
 
 # Set up directories on workdir
 subdirectories_results = [d for d in os.listdir(workdir) if os.path.isdir(os.path.join(workdir, d))]
-print(subdirectories_results)
 # SEARCH FOR OUTPUT FILES
 # Recover possible algorithms for each metric of the pairwise correlation
 # Cases for metrics selected available
@@ -103,7 +102,6 @@ for subdir in subdirectories_results:
     os.chdir(workdir)
     if os.path.exists(subdir):
        subdir_name = os.path.basename(subdir)
-       print(subdir_name)
        if "signatures" in subdir_name:
           continue
        
@@ -122,7 +120,6 @@ for subdir in subdirectories_results:
                 files_fastani = glob(os.path.join(workdir, subdir_name, "fastani*"))
                 files_fastani = [file for file in files_fastani if not file.endswith('.csv')]
                 for file in files_fastani:
-                    print(file)
                     k = int(file.split("_")[-1].split(".")[0])
                     data_fastani = pd.read_csv(file, header=None, sep='\t')
                     data_fastani = data_fastani.iloc[:, :3]
@@ -134,7 +131,6 @@ for subdir in subdirectories_results:
                     data_fastani['GenomeA'] = data_fastani['GenomeA'].replace('.fasta', '', regex=True)
                     data_fastani['GenomeB'] = data_fastani['GenomeB'].replace('.fasta', '', regex=True)
                     fastani_results = pd.concat([fastani_results, data_fastani])
-                    print(fastani_results)
                     
             fastani_results.to_csv(os.path.join(workdir, subdir_name, f"fastani_results_{subdir_name}.csv"), index=False)
             
@@ -154,7 +150,6 @@ for subdir in subdirectories_results:
                     data_skani['GenomeA'] = data_skani['GenomeA'].replace('.fasta', '', regex=True)
                     data_skani['GenomeB'] = data_skani['GenomeB'].replace('.fasta', '', regex=True)
                     skani_results = pd.concat([skani_results, data_skani])
-                    print(fastani_results)
                 
             skani_results.to_csv(os.path.join(workdir, subdir_name, f"skani_results_{subdir_name}.csv"), index=False)   
             
@@ -180,15 +175,17 @@ for subdir in subdirectories_results:
               files_sourmash = glob(os.path.join(workdir, subdir_name, "sourmash*.csv"))
               accessions_path=os.path.join(source,subdir_name)
               accessions= os.listdir(accessions_path)
-              genomes= [os.path.splitext(file)[0] for file in accessions if file.endswith(".fasta")]
+              print(accessions)
+              genomes = [genome.split('.')[-1] for genome in accessions]
+              print(genomes)
               for file in files_sourmash:
                 k_values = [int(match.group(1)) for match in re.finditer(r'k(\d+)', file)]
                 k = k_values[0] if k_values else None 
-                #k = int(re.search(r"k(\d+)", file).group(1))
                 if k in kmers:
-                    data_sourmash = pd.read_csv(file, sep=',')
-                    data_sourmash.columns = genomes
-                    data_sourmash.index = genomes
+                    data_sourmash=pd.read_csv(file, sep=',')  
+                    print(data_sourmash)    
+                    data_sourmash.columns=genomes
+                    data_sourmash.index=genomes
                     data_sourmash=data_sourmash.to_numpy()
                     distances=pdist(data_sourmash)
                     square_distances=squareform(distances)
@@ -205,4 +202,4 @@ for subdir in subdirectories_results:
     ani_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"ani_metrics_{subdir_name}.csv"), index=False)
     mash_metrics_result=pd.concat([mash_results,sourmash_results])
     mash_metrics_result.to_csv(os.path.join(workdir,subdir_name,f"mash_metrics_{subdir_name}.csv"), index=False)
-    
+   

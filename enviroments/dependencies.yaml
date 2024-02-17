@@ -9,6 +9,7 @@ dependencies:
   - _r-mutex=1.0.1=anacondar_1
   - appdirs=1.4.4=pyh9f0ad1d_0
   - binutils_impl_linux-64=2.40=hf600244_0
+  - biopython=1.83=py312h98912ed_0
   - bitstring=3.1.9=pyhd8ed1ab_0
   - brotli=1.1.0=hd590300_1
   - brotli-bin=1.1.0=hd590300_1
@@ -177,6 +178,6 @@ dependencies:
   - zlib=1.2.13=hd590300_5
   - zstd=1.5.5=hfc55251_0
   - pip:
-      - pyarrow==15.0.0
-      - xlsx2csv==0.8.2
-
+    - pyarrow==15.0.0
+    - xlsx2csv==0.8.2
+prefix: /home/bcem2021/anaconda3/envs/dependencies

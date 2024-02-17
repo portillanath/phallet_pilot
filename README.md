@@ -8,6 +8,8 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh 
 ~/miniconda3/bin/conda init bash
 
+For Ubuntu Users guarantee that the GLIBCXX_3.4.29 is properly installed, if this is not the case update with sudo apt install libstdc++6 libc6
+
 2. For the local installation on a Linux machine it is necesary guarantee the dependencies throught the conda enviroment, use the command inside the phallet_graph directory 
 
 conda config --add channels defaults

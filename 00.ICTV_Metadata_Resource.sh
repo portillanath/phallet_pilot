@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pip install xlsx2csv
+#pip install xlsx2csv
 
 # Create the folder for storing ICTV Metadata
 mkdir -p ./Virus_Metadata_Resource

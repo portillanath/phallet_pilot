@@ -1,0 +1,31 @@
+name: phallet
+
+on:
+  push:
+    branches:
+    - main 
+  pull_request:
+    branches: 
+    - main 
+  worlflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+    - uses : actions/checkout@v2   
+    - name: install dependencies 
+      run: conda config --add channels defaults
+           conda config --add channels conda-forge 
+           conda config --add channels bioconda
+           conda env create --file dependencies.yaml
+      shell: bash 
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Running phallet
+      run: bash phallet.sh
+    - name: LS Output after checkout 
+      run: ls
+
+       issues:
+    types: [ opened, reopened, closed ]
